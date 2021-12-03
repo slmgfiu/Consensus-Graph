@@ -1,0 +1,47 @@
+1. In R Console, run
+    source("document/AverageNetwork3.R")
+    document/AverageNetwork3.R is the location of your R code.
+
+2. Run function y = sumTable(pathname = "/home/zgong001/Documents/Alarm/D1KC9v/D1KC9v BestOrders/Strus_D1KC9v.txt",
+                t = c("B-W", "AIFM1", "ATP6V1C2", "CACNA1D", "CACNB1", "CDH15", "CLDN6", "DDIT3"),
+                exfilename = "/home/zgong001/Documents/Alarm/D1KC9v/D1KC9v BestOrders/Strus_D1KC9v.xlsx")
+
+    pathname is the structures file you got from C++ code.
+    t is the column names of your data.
+    exfilename is the output file name.
+
+After this step you get a .xlsx file. There are 2 sheets in it. One is calculated with order effect and another is without order effect. If you want use the sheet with order, you should put this sheet as the first sheet. If you want use another sheet, put it the first sheet. The first sheet will be put in the function ExeAve.
+
+3. If you want run one structure at a time, run
+
+    y = AverageNet21 (pathname = "/Projects/Luminal/3/SS/Pairs-A3-Luminal A-A-B.xlsx",
+                     str = "",
+                     outfile = "/home/zgong001/Documents/dot/out.gv")
+
+    pathname is the xlsx file you get from 1
+    str is the structure like that "[6][8][5][7|6:8:5][3|7][1|7:3][4|1][2|4][0|2]"
+    outfile is output file you will use it to convert to graph, you should make sure it has extension .gv.
+
+
+   or if you want to run several structure at a time, run 
+
+   y = ExeAve(epathname = "/home/zgong001/Documents/Projects/Luminal/3/SS/Pairs-A3-Luminal A-A-B.xlsx",
+                       strfile = "",
+                       outfile = "/home/zgong001/Documents/dot/")
+
+  
+  
+   epathname is the file you got from 1.
+
+   strfile is an xlsx file you got from R code I send and the sheet Name should be "Structures". It is a list of structures.
+
+   outfile is the folder where the output files will be in.
+
+3. do the following:
+   enter the fold which the .gv file is in in the terminal.
+
+4. execute
+
+   dot -Tpdf graph1.gv -o graph1.pdf   or
+
+   dot -Tpng -Gdpi=600 v2_Stru-A1-Luminal\ A-White.gv -o v2_Stru-A1-Luminal\ A-White.gv.png
